@@ -1,32 +1,33 @@
 <template>
   <div id="app">
-    <nav>
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </nav>
-    <router-view />
+    <Headers></Headers>
+    <Contents></Contents>
+    <Footers></Footers>
   </div>
 </template>
+<script>
+import Headers from '@/components/Headers.vue';
+import Contents from '@/components/Contents.vue';
+import Footers from '@/components/Footers.vue';
 
-<style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+export default {
+    name: "App",
+    components: {
+        Headers,
+        Contents,
+        Footers
+    },
+    
 }
-
-nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
+</script>
+<style lang="scss" scoped>
+* {
+    font-family: microsoft yahei;
+}
+#app {
+    width: 1000px;
+    margin: 0 auto;
+    padding: 0;
+    box-shadow: 0 0 10px 7px rgba(225,255,226);
 }
 </style>
