@@ -10,7 +10,9 @@
                 <img src="@/assets/next.png" alt="">
             </div>
         </dd>
-        <dd></dd>
+        <dd>
+            <Search/>
+        </dd>
         <dd class="person">
             <PersonMsg></PersonMsg>
         </dd>
@@ -29,7 +31,8 @@ export default {
         }
     },
     components: {
-        PersonMsg: () => import('@/components/PersonMsg.vue')
+        PersonMsg: () => import('@/components/PersonMsg.vue'),
+        Search : () => import('@/components/Search.vue')
     }
 }
 </script>

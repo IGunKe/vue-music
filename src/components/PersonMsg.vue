@@ -28,6 +28,27 @@
                     <span>等级</span>
                     <span class="intro">Lv.7</span>
                 </dd>
+                <dd class="dd-bottom">
+                    <img src="../assets/buy.png" />
+                    <span>积分商城</span>
+                    <span class="intro">12积分</span>
+                </dd>
+                <dd>
+                    <img src="../assets/setting.png" />
+                    <span>个人信息设置</span>
+                </dd>
+                <dd>
+                    <img src="../assets/phone.png" />
+                    <span>绑定社交账号</span>
+                </dd>
+                <dd class="dd-bottom">
+                    <img src="../assets/in.png" />
+                    <span>导入歌单</span>
+                </dd>
+                <dd>
+                    <img src="../assets/end.png" />
+                    <span>退出登录</span>
+                </dd>
             </dl>
         </div>
     </div>
@@ -47,7 +68,6 @@ export default {
             console.log(this.show);
             this.show = !this.show;
             console.log(this.show);
-
         }
     }
 };
@@ -118,7 +138,7 @@ export default {
         .content {
             width: 100%;
             background-color: white;
-            box-shadow: 0 2px 4px rgba(225,225,226);
+            box-shadow: 0 2px 4px rgba(225, 225, 226);
             border-radius: 5px;
             dt {
                 font-size: 15px;
@@ -128,7 +148,7 @@ export default {
                     border-radius: 40px;
                     vertical-align: top;
                 }
-                >span {
+                > span {
                     line-height: 40px;
                     padding: 0 5px;
                     width: 120px;
@@ -136,7 +156,7 @@ export default {
                 }
                 button {
                     font-size: 12px;
-                    border: 1px solid rgba(236,237,238);
+                    border: 1px solid rgba(236, 237, 238);
                     background-color: white;
                     text-align: right;
                     width: 60px;
@@ -160,8 +180,8 @@ export default {
                         display: inline-block;
                     }
                     span:nth-child(2) {
-                        border-left: 1px solid rgba(225,225,226);
-                        border-right: 1px solid rgba(225,225,226);
+                        border-left: 1px solid rgba(225, 225, 226);
+                        border-right: 1px solid rgba(225, 225, 226);
                     }
                 }
             }
@@ -174,13 +194,13 @@ export default {
                 line-height: 24px;
                 position: relative;
                 &:hover {
-                    background-color: rgba(236,237,238);
+                    background-color: rgba(236, 237, 238);
                     cursor: pointer;
                 }
                 > img {
                     width: 20px;
                     height: 20px;
-                    opacity: .5;
+                    opacity: 0.5;
                     vertical-align: top;
                     margin-right: 10px;
                 }
@@ -193,13 +213,16 @@ export default {
                     width: 10px;
                     height: 10px;
                     background-size: cover;
-                    opacity: .5;
+                    opacity: 0.5;
+                }
+                &.dd-bottom {
+                    border-bottom: 1px solid rgba(233,233,233);
                 }
                 .intro {
                     display: inline-block;
-                    position: relative;
-                    right: 10px;
-                    color: rgba(136,136,136);
+                    position: absolute;
+                    right: 30px;
+                    color: rgba(136, 136, 136);
                 }
             }
         }
