@@ -12,7 +12,7 @@
         </dd>
         <dd></dd>
         <dd class="person">
-
+            <PersonMsg></PersonMsg>
         </dd>
         <dd></dd>
         <dd></dd>
@@ -27,6 +27,9 @@ export default {
         return {
             app: '网易云音乐'
         }
+    },
+    components: {
+        PersonMsg: () => import('@/components/PersonMsg.vue')
     }
 }
 </script>

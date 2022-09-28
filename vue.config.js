@@ -4,7 +4,7 @@ module.exports = defineConfig({
   lintOnSave: false,
   publicPath: './',
   outputDir: 'dist',
-  assetsDir: 'public',
+  assetsDir: 'assetsDir',
   css: {
     loaderOptions: {
         scss: {

@@ -5,7 +5,7 @@
             <img src="@/assets/headset.png" />
             {{ number }}
         </p>
-        <img v-bind:src="imgSrc" alt="" />
+        <img :src="imgSrc" alt="" />
         <span>{{ introduce }}</span>
         <em v-if="!down" class="animated fadeIn"></em>
     </dd>

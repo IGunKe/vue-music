@@ -25,7 +25,7 @@
                     number="77万"
                     msg="编辑推荐：人生之歌一开始便不休止。一首·····"
                     width="17%"
-                    img-src="@/assets/static/img/1.jpg"
+                    img-src="/static/img/1.jpg"
                     introduce="最长的名字，最动人的歌，最好听的故事"
                 ></Cover>
                 <Cover
@@ -151,7 +151,6 @@ export default {
                 text-align: center;
                 line-height: 40px;
                 font-size: 14px;
-                margin-left: 0px;
                 &:hover {
                     color: rgba(198, 47, 47);
                     cursor: pointer;
