@@ -5,7 +5,7 @@
             <img src="@/assets/headset.png" />
             {{ number }}
         </p>
-        <img :src="imgSrc" alt="" />
+        <img :src="imgSrc" alt="" error="@/asserts/logo.png"/>
         <span>{{ introduce }}</span>
         <em v-if="!down" class="animated fadeIn"></em>
     </dd>
