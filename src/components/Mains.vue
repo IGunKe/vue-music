@@ -10,7 +10,9 @@
                 <dd>最新音乐</dd>
             </dl>
         </div>
-        <div class="slider">后面再写滚动组件</div>
+        <div class="slider">
+            <Slider v-bind="setting"></Slider>
+        </div>
         <div class="recomand">
             <h1>推荐歌单</h1>
             <dl>
@@ -118,11 +120,20 @@ export default {
     data() {
         return {
             app: '网易云音乐',
-            publicPath: process.env.BASE_URL
+            publicPath: process.env.BASE_URL,
+            setting: {
+                styleObject: {
+                    width: '750',
+                    height: '350'
+                },
+                imgSrc: ['img/1-1.jpg','img/1-2.jpg', 'img/1-3.jpg', 'img/1-4.jpg', 'img/1-5.jpg'],
+                interval: 4000
+            }
         };
     },
     components: {
-        Cover: () => import('@/components/Cover.vue')
+        Cover: () => import('@/components/Cover.vue'),
+        Slider: () => import('@/components/Slider.vue')
     }
 };
 </script>
@@ -164,10 +175,11 @@ export default {
         }
     }
     .slider {
-        height: 250px;
-        width: 100%;
-        text-align: center;
-        line-height: 250px;
+        // height: 250px;
+        // width: 100%;
+        // text-align: center;
+        // line-height: 250px;
+        margin-top: 20px;
     }
     .recomand {
         width: 100%;

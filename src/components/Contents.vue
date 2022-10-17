@@ -22,7 +22,7 @@ export default {
 
 <style lang="scss" scoped>
 #contents {
-    height: 570px;
+    height: 527px;
     width: 100%;
 }
 </style>
