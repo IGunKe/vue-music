@@ -115,6 +115,8 @@
 </template>
 
 <script>
+import Slider from 'vue-image-scroll';
+
 export default {
     name: 'Mains',
     data() {
@@ -126,14 +128,51 @@ export default {
                     width: '750',
                     height: '350'
                 },
-                imgSrc: ['img/1-1.jpg','img/1-2.jpg', 'img/1-3.jpg', 'img/1-4.jpg', 'img/1-5.jpg'],
-                interval: 4000
+                //imgSrc: ['img/1-1.jpg','img/1-2.jpg', 'img/1-3.jpg', 'img/1-4.jpg', 'img/1-5.jpg'],
+                interval: 4000,
+                image: [
+                    {
+                        src: 'img/1-1.jpg',
+                        tagName: '',
+                        tagStyle: {
+                            backgroundColor: 'blue'
+                        }
+                    },
+                    {
+                        src: 'img/1-2.jpg',
+                        tagName: '',
+                        tagStyle: {
+                            backgroundColor: 'blue'
+                        }
+                    },
+                    {
+                        src: 'img/1-3.jpg',
+                        tagName: '',
+                        tagStyle: {
+                            backgroundColor: 'blue'
+                        }
+                    },
+                    {
+                        src: 'img/1-4.jpg',
+                        tagName: '',
+                        tagStyle: {
+                            backgroundColor: 'blue'
+                        }
+                    },
+                    {
+                        src: 'img/1-5.jpg',
+                        tagName: '',
+                        tagStyle: {
+                            backgroundColor: 'blue'
+                        }
+                    }
+                ]
             }
         };
     },
     components: {
         Cover: () => import('@/components/Cover.vue'),
-        Slider: () => import('@/components/Slider.vue')
+        Slider
     }
 };
 </script>
