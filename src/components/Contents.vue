@@ -1,8 +1,13 @@
 <template>
-  <div id="contents" name="contents">
-    <Lists></Lists>
-    <Mains></Mains>
-  </div>
+    <div id="contents" name="contents">
+        <div class="left">
+            <Lists :choosed="topName"></Lists>
+        </div>
+        <div class="right">
+            
+            <router-view />
+        </div>
+    </div>
 </template>
 
 <script>
@@ -10,19 +15,38 @@ export default {
     name: 'Contents',
     data() {
         return {
-            app: '网易云音乐'
-        }
+            app: ''
+        };
     },
     components: {
-        Lists: () => import('@/components/List.vue'),
-        Mains: () => import('@/components/Mains.vue')
+        Lists: () => import('@/components/List.vue')
+    },
+    computed: {
+        topName() {
+            let path = this.$route.path;
+            console.log(path);
+            path = path.substring(1);
+            path = path.substring(0, path.indexOf('/'));
+            return path;
+        }
     }
-}
+};
 </script>
 
 <style lang="scss" scoped>
 #contents {
     height: 527px;
     width: 100%;
+    .left {
+        width: 20%;
+        height: 100%;
+        float: left;
+    }
+
+    .right {
+        width: 80%;
+        height: 100%;
+        float: right;
+    }
 }
 </style>

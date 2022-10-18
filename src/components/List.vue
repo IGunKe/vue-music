@@ -2,12 +2,17 @@
   <div id="list" name="list">
     <dl>
         <dt>推荐</dt>
-        <dd class="choosed">
+        <router-link to="/home/recommend">
+            <dd :class="{choosed: choosed == 'find'}">
             <span><img class="icon" src="@/assets/music.png" alt="">发现音乐</span>
         </dd>
-        <dd>
+        </router-link>
+        <router-link to="/">
+            <dd to-link :class="{choosed: choosed == 'personal'}">
             <span><img class='icon' src="@/assets/fm.png" alt="">私人FM</span>
         </dd>
+        </router-link>
+        
         <dd>
             <span><img class='icon' src="@/assets/mv.png" alt="">MV</span>
         </dd>
@@ -75,6 +80,7 @@
 <script>
 export default {
     name: 'List',
+    props: ['choosed'],
     data() {
         return {
             app: '网易云音乐'
@@ -86,7 +92,7 @@ export default {
 <style lang="scss" scoped>
 #list {
     height: 100%;
-    width: 20%;
+    width: 100%;
     background-color: rgba(245,245,247);
     float: left;
     // 隐藏y轴方向的滚动条
@@ -96,6 +102,7 @@ export default {
         height: 30px;
         font-size: 15px;
         line-height: 30px;
+        color: rgba(125, 125, 125);
         position: relative;
     }
     dd {

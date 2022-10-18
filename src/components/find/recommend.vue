@@ -1,15 +1,6 @@
 <template>
     <div id="mains" name="mains">
-        <div class="navigation">
-            <dl>
-                <dd class="choosed">个性推荐</dd>
-                <dd>歌单</dd>
-                <dd>主播电台</dd>
-                <dd>排行榜</dd>
-                <dd>歌手</dd>
-                <dd>最新音乐</dd>
-            </dl>
-        </div>
+        
         <div class="slider">
             <Slider v-bind="setting"></Slider>
         </div>
@@ -126,7 +117,7 @@ export default {
             setting: {
                 styleObject: {
                     width: '750',
-                    height: '350'
+                    height: '300'
                 },
                 //imgSrc: ['img/1-1.jpg','img/1-2.jpg', 'img/1-3.jpg', 'img/1-4.jpg', 'img/1-5.jpg'],
                 interval: 4000,
@@ -171,7 +162,7 @@ export default {
         };
     },
     components: {
-        Cover: () => import('@/components/Cover.vue'),
+        Cover: () => import('@/components/find/cover.vue'),
         Slider
     }
 };
@@ -188,31 +179,7 @@ export default {
     padding: 0 20px;
 
     overflow-y: scroll;
-    .navigation {
-        height: 40px;
-        border-bottom: 1px solid rgba(225, 225, 226);
-        dl {
-            width: 100%;
-            overflow: hidden;
-            dd {
-                height: 40px;
-                display: inline-block;
-                // float: left;
-                width: 16.6%;
-                text-align: center;
-                line-height: 40px;
-                font-size: 14px;
-                &:hover {
-                    color: rgba(198, 47, 47);
-                    cursor: pointer;
-                }
-            }
-            .choosed {
-                border-bottom: 2px solid rgba(198, 47, 47);
-                color: rgba(198, 47, 47);
-            }
-        }
-    }
+    
     .slider {
         // height: 250px;
         // width: 100%;
@@ -278,19 +245,5 @@ export default {
             height: 180px;
         }
     }
-}
-::-webkit-scrollbar {
-    width: 10px;
-    background-color: #f5f5f5;
-}
-::-webkit-scrollbar-track {
-    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0);
-    border-radius: 10px;
-    background-color: rgba(245, 245, 247);
-}
-::-webkit-scrollbar-thumb {
-    border-radius: 10px;
-    box-shadow: inset 0 0 6px rgba(225, 225, 226);
-    background-color: rgba(225, 225, 226);
 }
 </style>

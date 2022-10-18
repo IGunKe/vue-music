@@ -47,7 +47,7 @@ export default {
         div {
             border: 2px solid rgba(168,40,40);
             border-radius: 2px;
-            width: 50px;
+            width: 52px;
             margin: 0 auto;
             img {
                 height: 20px;

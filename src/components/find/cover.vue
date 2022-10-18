@@ -60,7 +60,7 @@ dd {
     }
     em {
         position: absolute;
-        background-image: url('../assets/play.png');
+        background-image: url('@/assets/play.png');
         width: 25px;
         height: 25px;
         right: 5px;
