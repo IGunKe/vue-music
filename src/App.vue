@@ -6,16 +6,12 @@
   </div>
 </template>
 <script>
-import Headers from '@/components/Headers.vue';
-import Contents from '@/components/Contents.vue';
-import Footers from '@/components/Footers.vue';
-
 export default {
     name: "App",
     components: {
-        Headers,
-        Contents,
-        Footers
+        Headers: () => import('@/components/Headers'),
+        Contents: () => import('@/components/Contents.vue'),
+        Footers: () => import('@/components/Footers.vue')
     },
     
 }

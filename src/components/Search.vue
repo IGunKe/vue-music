@@ -3,6 +3,8 @@
         <span
             ><input
                 type="text"
+                v-model="s"
+                @keyup.enter="search"
                 @focus="display"
                 @blur="display"
                 placeholder="搜索音乐，歌手，歌词，用户"
@@ -32,12 +34,32 @@ export default {
     data() {
         return {
             app: '网易云音乐',
-            show: false
+            show: false,
+            s: ''
         };
     },
     methods: {
         display() {
             this.show = !this.show;
+        },
+        search() {
+            if (new Set(...this.s).has(' ') || this.s === '') {
+                alert('别调皮啦！输入正确歌名');
+                return;
+            }
+            this.$store.commit('setSearchName', this.s);
+            this.$http
+                .post('/api/search/pc', { s: this.s, limit: 10, type: 1 })
+                .then(
+                    (response) => {
+                        console.log(response.body);
+                        // this.$store.commit('setSearchResult', response.body.result)
+                        this.$router.push({ path: '/search' });
+                    },
+                    (response) => {
+                        alert('网络存在问题，无法搜索');
+                    }
+                );
         }
     }
 };
@@ -105,7 +127,7 @@ export default {
                 color: black;
                 padding: 8px 10px;
                 &:hover {
-                    background-color: rgba(236,237,238);
+                    background-color: rgba(236, 237, 238);
                     cursor: pointer;
                 }
             }

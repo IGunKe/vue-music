@@ -25,7 +25,7 @@ export default {
     data() {
         return {
             publicPath: process.env.BASE_URL,
-            imgStyle: {},
+            imgStyle: () => {},
             leftStyle: {},
             centerStyle: {},
             rightStyle: {},

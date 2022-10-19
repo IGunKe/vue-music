@@ -13,10 +13,13 @@ module.exports = defineConfig({
             }
         }
     },
-    // proxyTable: {
-    //     '/api': {
-    //         target: 'http://music.163.com',
-    //         changeOrigin: true
-    //     }
-    // }
+    devServer: {
+        port: 8080,
+        proxy: {
+            '/api': {
+                target: 'http://music.163.com',
+                changeOrigin: true
+            }
+        }
+    }
 });

@@ -2,13 +2,13 @@
   <div id="list" name="list">
     <dl>
         <dt>推荐</dt>
-        <router-link to="/home/recommend">
+        <router-link to="/find/recommend">
             <dd :class="{choosed: choosed == 'find'}">
             <span><img class="icon" src="@/assets/music.png" alt="">发现音乐</span>
         </dd>
         </router-link>
-        <router-link to="/">
-            <dd to-link :class="{choosed: choosed == 'personal'}">
+        <router-link to="/personal">
+            <dd :class="{choosed: choosed == 'personal'}">
             <span><img class='icon' src="@/assets/fm.png" alt="">私人FM</span>
         </dd>
         </router-link>
@@ -85,6 +85,9 @@ export default {
         return {
             app: '网易云音乐'
         }
+    },
+    mounted() {
+        console.log(this.$props.name);
     }
 }
 </script>

@@ -1,13 +1,12 @@
 <template>
   <div>
-    {{$route.name}}
-    hello
+
   </div>
 </template>
 
 <script>
 export default {
-    name: 'Song'
+    name: 'Ablum'
 }
 </script>
 

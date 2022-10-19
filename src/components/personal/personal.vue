@@ -7,7 +7,7 @@
 
 <script>
 export default {
-    name: 'Song'
+    name: 'Personal'
 }
 </script>
 

@@ -1,6 +1,5 @@
 <template>
     <div id="mains" name="mains">
-        
         <div class="slider">
             <Slider v-bind="setting"></Slider>
         </div>
@@ -107,6 +106,7 @@
 
 <script>
 import Slider from 'vue-image-scroll';
+import Nav from '@/components/find/nav';
 
 export default {
     name: 'Mains',
@@ -162,9 +162,21 @@ export default {
         };
     },
     components: {
-        Cover: () => import('@/components/find/cover.vue'),
-        Slider
-    }
+        Cover: () => import('@/components/find/cover'),
+        Slider,
+        Nav
+    },
+    // computed: {
+    //     topName() {
+    //         let path = this.$route.path;
+    //         // console.log('recommend: ', path);
+    //         path = path.substring(1);
+    //         path = path.substring(path.indexOf('/'));
+    //         path = path.substring(1);
+    //         // console.log(path.substring(1));
+    //         return path;
+    //     }
+    // }
 };
 </script>
 
@@ -174,12 +186,14 @@ export default {
 }
 #mains {
     height: 100%;
-    width: 80%;
+    width: 100%;
     float: right;
     padding: 0 20px;
 
-    overflow-y: scroll;
-    
+    // overflow-y: scroll;
+    .navigation {
+        height: 40px;
+    }
     .slider {
         // height: 250px;
         // width: 100%;

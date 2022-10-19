@@ -1,72 +1,22 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 
+import Find from './find';
+import Personal from './personal';
+
 Vue.use(VueRouter);
 
 const routes = [
-    {
-        path: '/home',
-        name: 'home',
-        component: () => {
-            import('@/components/find/nav.vue');
-        },
-        redirect: '/home/recommend',
-        children: [
-            {
-                path: 'recommend',
-                name: 'recommend',
-                component: () => {
-                    import('@/components/find/recommend.vue');
-                }
-            },
-            {
-                path: 'song',
-                name: 'song',
-                component: () => {
-                    import('@/components/find/song.vue');
-                }
-            },
-            {
-                path: 'station',
-                name: 'station',
-                component: () => {
-                    import('@/components/find/station.vue');
-                }
-            },
-            {
-                path: 'singer',
-                name: 'singer',
-                component: () => {
-                    import('@/components/find/singer.vue');
-                }
-            },
-            {
-                path: 'new',
-                name: 'new',
-                component: () => {
-                    import('@/components/find/new.vue');
-                }
-            },
-            {
-                path: 'rank',
-                name: 'rank',
-                component: () => {
-                    import('@/components/find/rank.vue');
-                }
-            }
-        ]
-    },
-    {
-        path: '/',
-        redirect: '/home/recommend'
-    },
+    Find,
+    Personal,
     // {
-    //     path: '*',
-    //     name: 'NotFound',
-    //     component: () => {
-    //         import('@/components/not-found.vue');
-    //     }
+    //     path: '/',
+    //     redirect: '/find/recommend'
     // }
+    {
+        path: '*',
+        redirect: '/find/recommend'
+    }
 ];
 
 const router = new VueRouter({
