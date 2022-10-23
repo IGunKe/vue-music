@@ -1,12 +1,30 @@
 <template>
     <div id="footers" name="footers">
         <div class="control">
-            <img src="@/assets/music_pre.png" alt="" class="pre" />
-            <img src="@/assets/music_play.png" alt="" class="play" />
+            <img
+                src="@/assets/music_pre.png"
+                alt=""
+                class="pre"
+                @click="getCurrent"
+            />
+            <img
+                src="@/assets/music_play.png"
+                alt=""
+                class="play"
+                @click="playMusic"
+                :style="{ display: !play ? 'inline-block' : 'none' }"
+            />
+            <img
+                src="@/assets/music_stop.png"
+                alt=""
+                class="play"
+                @click="pauseMusic"
+                :style="{ display: !play ? 'none' : 'inline-block' }"
+            />
             <img src="@/assets/music_next.png" alt="" class="next" />
         </div>
         <div class="progress">
-            <span>0:00</span>
+            <span>{{ current }}</span>
             <vueSlider
                 ref="slider1"
                 class="playprogress"
@@ -14,7 +32,7 @@
                 v-model="progress"
                 style="display: inline-block; padding: 15px 10px"
             ></vueSlider>
-            <span>3:45</span>
+            <span>{{ end }}</span>
             <img src="@/assets/volume.png" alt="" class="volume" />
             <vueSlider
                 ref="slider2"
@@ -23,6 +41,16 @@
                 v-model="volume"
                 style="display: inline-block; padding: 15px 10px"
             ></vueSlider>
+            <audio
+                :src="mp3Url"
+                @canplay="audioInit"
+                ref="player"
+                @ended="ended"
+                @error="errorLoad"
+                @timeUpdate="setCurrent"
+                style="display: none"
+                controls="controls"
+            ></audio>
         </div>
     </div>
 </template>
@@ -35,7 +63,7 @@ export default {
     name: 'Footers',
     data() {
         return {
-            progress: 1,
+            progress: 0,
             volume: 2,
             setting: {
                 width: 430,
@@ -43,20 +71,98 @@ export default {
                 dotSize: 13,
                 processStyle: {
                     'background-color': 'rgba(232,60,60)'
-                }
+                },
+                min: 0,
+                max: 200,
+                clickable: true,
+                speed: 1.0
             },
             setting2: {
                 width: 100,
-                tooltip: false,
+                tooltip: 'hover',
                 dotSize: 10,
+                clickable: true,
                 processStyle: {
                     'background-color': 'rgba(232,60,60)'
-                }
-            }
+                },
+                min: 0,
+                max: 100
+            },
+            volume: 100,
+            play: false,
+            current: '00:00',
+            end: '00:00',
+            update: '',
+            drag: false
         };
     },
     components: {
         vueSlider
+    },
+    methods: {
+        getCurrent() {
+            const currentTime = this.$refs.player.currentTime;
+            this.end = this.timeToStr(currentTime);
+            this.setting.max = Number.parseInt(currentTime, 10);
+        },
+        audioInit() {
+            const duration = this.$refs.player.duration;
+            this.end = this.timeToStr(duration);
+            this.setting.max = Number.parseInt(duration, 10);
+            this.playMusic();
+        },
+        playMusic() {
+            if (!this.mp3Url) {
+                return;
+            }
+            this.update = setInterval(this.getCurrent, 1000 / 60);
+            this.$refs.player.play();
+            this.play = true;
+        },
+        pauseMusic() {
+            clearInterval(this.update);
+            this.$refs.player.pause();
+            this.play = false;
+        },
+        ended() {
+            clearInterval(this.update);
+            this.play = false;
+            this.progress = 0;
+        },
+        timeToStr(time) {
+            let min = Number.parseInt(time / 60, 10) + '';
+            let seconds = Number.parseInt(time % 60, 10) + '';
+            min = min.length === 1 ? '0' + min : min;
+            seconds = seconds.length === 1 ? '0' + seconds : seconds;
+            return min + ':' + seconds;
+        },
+        errorLoad() {
+            alert('该歌曲网易云具有版权，无法播放');
+            this.play = false;
+        },
+        setCurrent() {
+            // this.current = this.timeToStr(newValue)
+            // this.$refs.player.currentTime = this.current
+        }
+    },
+    computed: {
+        mp3Url() {
+            return this.$store.state.songList[0];
+        }
+    },
+    watch: {
+        progress(newValue, oldValue) {
+            if (this.drag || Math.abs(newValue - oldValue) > 1) {
+                this.current = this.timeToStr(newValue);
+                this.$refs.player.currentTime = newValue;
+            }
+        },
+        volume(newValue) {
+            this.$refs.player.volume = newValue / 100;
+        },
+        mp3Url() {
+            this.playMusic();
+        }
     }
 };
 </script>
@@ -112,5 +218,4 @@ export default {
         }
     }
 }
-
 </style>
